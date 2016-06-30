@@ -13,7 +13,6 @@
    color: #1a1a1a;  
 }
  
-
 .dc-select-menu {
    background-color: rgba(48,59,69, 0.95);
    width: 80%;
@@ -114,4 +113,9 @@ div.introjs-tooltiptext {
 
 #outer {
     padding: 1.5%;
+}
+
+#intro-start {
+  font-size: 14px; 
+  color: lightblue
 }

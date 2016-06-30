@@ -70,13 +70,12 @@ function makeGraphs(error, projectsJson, statesJson) {
     // All
     var all = ndx.groupAll();  
 
-
     // Reduce
     var totalDonationsByState = stateDim.group().reduceSum(function (d) { return d["total_donations"]; });  
     var totalDonations = ndx.groupAll().reduceSum(function (d) { return d["total_donations"]; });
-    var layer1 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support > 0 && d.total_price_excluding_optional_support < 500) {return d.num_donors;}else{return 0;}});
-    var layer2 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support >= 500 && d.total_price_excluding_optional_support < 1000) {return d.num_donors;}else{return 0;}});
-    var layer3 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support >= 1000) {return d.num_donors;}else{return 0;}});
+    var priceLayer1 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support > 0 && d.total_price_excluding_optional_support < 500) {return d.num_donors;}else{return 0;}});
+    var priceLayer2 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support >= 500 && d.total_price_excluding_optional_support < 1000) {return d.num_donors;}else{return 0;}});
+    var priceLayer3 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support >= 1000) {return d.num_donors;}else{return 0;}});
     var totalDonors = ndx.groupAll().reduceSum(function (d) { return d["num_donors"]; });
     var totalStudents = ndx.groupAll().reduceSum(function (d) { return d["students_reached"]; });
     var totalDonationsByDate = dateDim.group().reduceSum(function (d) { return d["total_donations"]; });
@@ -85,6 +84,8 @@ function makeGraphs(error, projectsJson, statesJson) {
     var usdProjectsByPovertyLevel = povertyLevelDim.group().reduceSum(function (d) { return d["total_donations"]; });
     var usdProjectsByResourceType = resourceTypeDim.group().reduceSum(function (d) { return d["total_donations"]; });
     var usdProjectsByGradeLevel = gradeLevelDim.group().reduceSum(function (d) { return d["total_donations"]; });
+    var usdProjectsByMetro = metroDim.group().reduceSum(function (d) { return d["total_donations"]; });
+    var usdProjectsBySubject = subjectDim.group().reduceSum(function (d) { return d["total_donations"]; });
     var year_total = yearDim.group().reduceSum(function(d) {return d.total_donations;});
     var totalDonationsByMonth = monthDim.group().reduceSum(function(d) {return d.total_donations;});   
 
@@ -174,6 +175,7 @@ function makeGraphs(error, projectsJson, statesJson) {
     var expCount = function(d) { return d.n; };
 
     // Records counter
+    /*This counter shows the amount of records selected after applying a filter. */
     dc.dataCount('.dc-data-count')
         .dimension(ndx)
         .group(all)
@@ -181,7 +183,16 @@ function makeGraphs(error, projectsJson, statesJson) {
         some: '<strong>%filter-count</strong> selected out of <strong>%total-count</strong> records',
         all: 'All records selected. Please click on the graph to apply filters.'}); 
 
-    // Charts variables
+    // Charts variables: allocation html template
+    var tableData = dc.dataTable("#data-table");
+    var selectFieldState = dc.selectMenu('#menu-select-state');
+    var selectFieldResource = dc.selectMenu('#menu-select-resource');
+    var selectFieldArea = dc.selectMenu('#menu-select-area');
+    var selectFieldSubject = dc.selectMenu('#menu-select-subject');
+    var selectFieldPoverty = dc.selectMenu('#menu-select-poverty');
+    var selectFieldFunding = dc.selectMenu('#menu-select-funding');
+    var selectFieldMetro = dc.selectMenu('#menu-select-metro');
+    var selectFieldTeacher = dc.selectMenu('#menu-select-teacher');
     var numberProjectsND = dc.numberDisplay("#number-projects-nd");
     var totalDonationsND = dc.numberDisplay("#total-donations-nd");
     var fundingStatusChart = dc.pieChart("#funding-chart");
@@ -205,14 +216,22 @@ function makeGraphs(error, projectsJson, statesJson) {
     var resourcePieChart = dc.pieChart("#resource-pie-chart");
     var povertyPieChart = dc.pieChart("#poverty-pie-chart");
     var areaPieChart = dc.pieChart("#area-pie-chart");
+    var metroPieChart = dc.pieChart("#metro-pie-chart");
     var statesPieChart = dc.pieChart("#states-pie-chart");
     var volumeChart = dc.barChart("#volume-chart");
-    var metroChart = dc.rowChart("#metro-chart");
-    var scatterChart1 = dc.scatterPlot("#scatter1-chart");
+    var scatterChart = dc.scatterPlot("#scatter1-chart");
     var donationsMonthChart = dc.barChart("#month-chart");
-    var tableData = dc.dataTable("#data-table");
 
-    // Charts
+    /*We created dimensions, then we created groups based on those dimensions,
+    * after that we reduced some data and calculated other needed values (max, mix, average, sum...),
+    * and finally we created variables to handle chart allocation on html template.
+    * Now we create charts using those diemnsion, groups, etc. */
+
+    // US Map ------------------------
+    /* This map shows the bic picture of donation in USD by state.
+     * Colours show donation amount.
+     * Title info: state and its donation in USD.
+     * Clicking on state --> Filter data. */
     usChart
         .width(1000)
         .height(330)
@@ -226,8 +245,11 @@ function makeGraphs(error, projectsJson, statesJson) {
         .scale(600)
         .translate([300, 170]))
         .title(function (p) { return "State: " + p["key"] + "\n" + "$" + numberFormat(Math.round(p["value"]));});
-
-     volumeChart
+ 
+    // Volume of donation ------------------------
+    /* This chart shows the volume of donations. 
+     * The brush lets filter time periods. */   
+    volumeChart
         .width(600)
         .height(40)
         .margins({top: 0, right: 50, bottom: 20, left: 40})
@@ -250,78 +272,69 @@ function makeGraphs(error, projectsJson, statesJson) {
             });
         })*/;
 
+    // Number display ------------------------
+    /* This is a summary of big figures in absolute and relative terms. */
+    // Number of donations
+    /* Default = all */ 
     numberProjectsND
         .formatNumber(d3.format(","))
         .valueAccessor(function (d) { return d; })
         .group(all);
 
-    totalDonationsND
-        .valueAccessor(function (d) { return d; })
-        .group(totalDonations)
-        .formatNumber(d3.format("$.3s"));
-
-    donorsProjectsND
-        .valueAccessor(function (d) { return d; })
-        .group(totalDonors)
-        .formatNumber(d3.format(","));
-
-    studentsProjectsND
-        .valueAccessor(function (d) { return d; })
-        .group(totalStudents)
-        .formatNumber(d3.format(","));
-
-    avgDonorsProjectsND
-        .group(meanDonorsGroup)
-        .valueAccessor(average)
-        .formatNumber(d3.format(".3s"));
-
-    avgStudentsProjectsND
-        .group(meanStudentsGroup)
-        .valueAccessor(average)
-        .formatNumber(d3.format(".3s"));
-
-    usdAvgDonationsND
-        .valueAccessor(average)
-        .group(meanDonationsGroup)
-        .formatNumber(d3.format("$.3s"));
-
+    // Percentage of total
+    /* Default = 100% */ 
     ratioNumberProjectsND
         .formatNumber(d3.format(",.2%"))
         .valueAccessor(function (d) { return d/55000;})
         .group(all);
 
-    selectField = dc.selectMenu('#menu-select')
-        .dimension(stateDim)
-        .group(stateGroup);
+    // Donations in USD
+    /* Default = all */ 
+    totalDonationsND
+        .valueAccessor(function (d) { return d; })
+        .group(totalDonations)
+        .formatNumber(d3.format("$.3s"));
 
-    selectField2 = dc.selectMenu('#menu2-select')
-        .dimension(resourceTypeDim)
-        .group(numProjectsByResourceType);
+    // Average donations in USD
+    /* Default = all */ 
+    usdAvgDonationsND
+        .valueAccessor(average)
+        .group(meanDonationsGroup)
+        .formatNumber(d3.format("$.3s"));
 
-    selectField3 = dc.selectMenu('#menu3-select')
-        .dimension(areaDim)
-        .group(numProjectsByArea);
+    // Number of students reached
+    /* Default = all */ 
+    studentsProjectsND
+        .valueAccessor(function (d) { return d; })
+        .group(totalStudents)
+        .formatNumber(d3.format(","));
 
-    selectField4 = dc.selectMenu('#menu4-select')
-        .dimension(subjectDim)
-        .group(numProjectsBySubject);
+    // Average students reached
+    /* Default = all */
+    avgStudentsProjectsND
+        .group(meanStudentsGroup)
+        .valueAccessor(average)
+        .formatNumber(d3.format(".3s"));
 
-    selectField5 = dc.selectMenu('#menu5-select')
-        .dimension(povertyLevelDim)
-        .group(numProjectsByPovertyLevel);
+    // Number of donors
+    /* Default = all */
+    donorsProjectsND
+        .valueAccessor(function (d) { return d; })
+        .group(totalDonors)
+        .formatNumber(d3.format(","));
 
-    selectField6 = dc.selectMenu('#menu6-select')
-        .dimension(fundingStatus)
-        .group(numProjectsByFundingStatus);
+    // Average donors
+    /* Default = all */
+    avgDonorsProjectsND
+        .group(meanDonorsGroup)
+        .valueAccessor(average)
+        .formatNumber(d3.format(".3s"));
 
-    selectField7 = dc.selectMenu('#menu7-select')
-        .dimension(metroDim)
-        .group(numProjectsByMetro);
-
-    selectField8 = dc.selectMenu('#menu8-select')
-        .dimension(teacherPrefixDim)
-        .group(numProjectsByTeacherPrefix);
-
+    // Line chart with zoom ------------------------
+    /* This chart shows number of donations and donations in USD.
+     * With zoom you can select period of time.
+     * Title info: date and its donation in USD or/and amount.
+     * Brush option: deactivated */
     moveChart
         .width(950)
         .height(200)
@@ -362,6 +375,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .rightYAxisLabel("Number of donations")
         .renderHorizontalGridLines(false);
 
+    // Pie chart funding status ------------------------
+    /* This chart shows number of donations by funding status.
+     * Title info: funding status, its number of donation and its percentage.
+     * Clicking status --> Filter data. */
     fundingStatusChart
         .height(200)
         .radius(90)
@@ -375,6 +392,12 @@ function makeGraphs(error, projectsJson, statesJson) {
         .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
         .renderTitle(true);
 
+    // Stack line chart ------------------------
+    /* This chart shows price excluding optional support disaggregated by ranges.
+     * Ranges: <$500; between $500 and <$1000; >=$1000
+     * Zoom: deactivates.
+     * Title info: date and its number.
+     * Brush option: deactivated */ 
     stackLinesChart
         .width(930)
         .height(200)
@@ -382,9 +405,9 @@ function makeGraphs(error, projectsJson, statesJson) {
         .rangeChart(moveChart)
         .mouseZoomable(false)
         .margins({top: 10, right: 50, bottom: 30, left: 70})
-        .group(layer1, "Price excluding optional support lower than $500")
-        .stack(layer2, "Price excluding optional support between $500 and $1000")
-        .stack(layer3, "Price excluding optional support higher $1000")
+        .group(priceLayer1, "Price excluding optional support lower than $500")
+        .stack(priceLayer2, "Price excluding optional support between $500 and $1000")
+        .stack(priceLayer3, "Price excluding optional support higher $1000")
         .renderArea(true)
         .brushOn(false)
         .elasticY(true)
@@ -398,6 +421,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .legend(dc.legend().x(90).y(20).itemHeight(13).gap(5))
         .yAxisLabel("Donations");
 
+    // Pie chart teacher prefix ------------------------
+    /* This chart shows number of projects clasified by teacher prefix.
+     * Title info: teacher prefix, its number of donation and its percentage.
+     * Clicking on prefix --> Filter data. */
     teacherPrefixChart
         .height(200)
         .radius(90)
@@ -411,6 +438,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
         .renderTitle(true);
 
+    // Row chart resource type ------------------------
+    /* This chart shows donations in USD clasified by resource type.
+     * Title info: resource type, its donations in USD.
+     * Clicking on resource --> Filter data. */
     resourceTypeChart
         .width(300)
         .height(200)
@@ -420,6 +451,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .renderTitle(true)
         .xAxis().ticks(4);
 
+    // Row chart poverty level ------------------------
+    /* This chart shows donations in USD clasified by poverty level.
+     * Title info: poverty level, its donations in USD.
+     * Clicking on level --> Filter data. */
     povertyLevelChart
         .width(300)
         .height(200)
@@ -429,6 +464,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .renderTitle(true)
         .xAxis().ticks(4);
 
+    // Row chart primary focus area ------------------------
+    /* This chart shows donations in USD clasified by primary focus area.
+     * Title info: primary focus area, its donations in USD.
+     * Clicking on area --> Filter data. */
     areaChart
         .width(300)
         .height(200)
@@ -438,6 +477,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .renderTitle(true)
         .xAxis().ticks(4);
 
+    // Row chart grade level ------------------------
+    /* This chart shows donations in USD clasified by grade level.
+     * Title info: grade level, its donations in USD.
+     * Clicking on grade level --> Filter data. */
     usdGradeChart
         .width(300)
         .height(200)
@@ -447,6 +490,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .renderTitle(true)
         .xAxis().ticks(4);
 
+    // Pie chart resource type ------------------------
+    /* This chart shows number of projects clasified by resource type.
+     * Title info: resource type, its number of donation and its percentage.
+     * Clicking on resouce --> Filter data. */
     resourcePieChart
         .height(200)
         .radius(90)
@@ -460,6 +507,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
         .renderTitle(true);
 
+    // Pie chart poverty level ------------------------
+    /* This chart shows number of projects clasified by poverty level.
+     * Title info: poverty level, its number of donation and its percentage.
+     * Clicking on poverty level --> Filter data. */
     povertyPieChart
         .height(200)
         .radius(90)
@@ -473,6 +524,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
         .renderTitle(true);
 
+    // Pie chart primary focus area ------------------------
+    /* This chart shows number of projects clasified by primary focus area.
+     * Title info: primary focus area, its number of donation and its percentage.
+     * Clicking on area --> Filter data. */
     areaPieChart
         .height(200)
         .radius(90)
@@ -486,6 +541,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
         .renderTitle(true);
 
+    // Pie chart grade level ------------------------
+    /* This chart shows number of projects clasified by grade level.
+     * Title info: grade level, its number of donation and its percentage.
+     * Clicking on grade level --> Filter data. */
     gradePieChart
         .height(200)
         .radius(90)
@@ -499,6 +558,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
         .renderTitle(true);
 
+    // Bar chart donations by state ------------------------
+    /* This chart shows donations in USD by state.
+     * Title info: state and its donation in USD.
+     * Clicking on state --> Filter data. */
     usdStateDonationsChart
         .width(1000)
         .height(200)
@@ -515,6 +578,10 @@ function makeGraphs(error, projectsJson, statesJson) {
         .renderTitle(true)
         .yAxis().ticks(4);
 
+    // Pie chart donation by state ------------------------
+    /* This chart shows number of doantions clasified by state.
+     * Title info: state, its donation in USD and its percentage.
+     * Clicking on satate --> Filter data. */
     statesPieChart
         .height(200)
         .radius(90)
@@ -528,6 +595,14 @@ function makeGraphs(error, projectsJson, statesJson) {
         .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
         .renderTitle(true);
 
+    // Bubble chart ------------------------
+    /* This chart shows 3 variables related to primary focus area: 
+     * - Bubble -> Primary focus area
+     * - X axis -> Students reached
+     * - Y axis -> Donations in USD 
+     * - Bubble size -> Average donors
+     * Title info: Primary focus area, students reaches, donations in USD and average donors.
+     * Clicking on state --> Filter data. */
     bubbleChart
         .dimension(areaDim)
         .group(bubblesVars)
@@ -568,16 +643,27 @@ function makeGraphs(error, projectsJson, statesJson) {
             return p.value.c;
         });
 
-    metroChart
-        .width(300)
+    // Pie chart metro ------------------------
+    /* This chart shows number of projects clasified by metro area.
+     * Title info: metro area, its number of donation and its percentage.
+     * Clicking on area --> Filter data. */
+    metroPieChart
         .height(200)
+        .radius(90)
+        .innerRadius(40)
+        .externalLabels(1)
+        .transitionDuration(1500)
         .dimension(metroDim)
         .group(numProjectsByMetro)
-        .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations"; })
-        .renderTitle(true)
-        .xAxis().ticks(4);
+        .label(function(d) { return d.key; })
+        .renderLabel(true)
+        .title(function(d) { return d.key + "\n" + numberFormat(d.value) + " donations" + "\n" + Math.floor(d.value / all.value() * 100) + "%"; })
+        .renderTitle(true);
 
-    scatterChart1
+    // Scatter plot ------------------------
+    /* This chart shows relation between number of students reached and number of donors: 
+     * Selecting points --> Filter data. */
+    scatterChart
         .width(650)
         .height(200)
         .x(d3.scale.linear().domain([0, 2500]))
@@ -591,7 +677,11 @@ function makeGraphs(error, projectsJson, statesJson) {
         .excludedOpacity(0.5)
         .group(groupForScatter);
 
-     donationsMonthChart
+    // Bar chart months ------------------------
+    /* This chart shows donations in USD clasified by month.
+     * Title info: month, its donations in USD.
+     * Clicking on month --> Filter data. */
+    donationsMonthChart
         .width(650)
         .height(200)
         .margins({top: 10, right: 50, bottom: 30, left: 70})
@@ -607,12 +697,13 @@ function makeGraphs(error, projectsJson, statesJson) {
         .renderTitle(true)
         .yAxis().ticks(4);
 
+    // Table ------------------------
     tableData
         .width(650)
         .height(800)
         .dimension(dateDim)
         .group(function(d) {return d.year;})
-        .size(10)
+        .size(50)
         .columns([
             function(d) {return d.school_state;},
             function(d) {return d.resource_type;},
@@ -623,11 +714,54 @@ function makeGraphs(error, projectsJson, statesJson) {
             function(d) {return d.grade_level;},
             function(d) {return d.students_reached;},        
             function(d) {return d.primary_focus_subject;},
-            function(d) {return d.primary_focus_area;}        
+            function(d) {return d.primary_focus_area;},        
+            function(d) {return d.school_metro;},        
+            function(d) {return d.teacher_prefix;}        
         ])
         .sortBy(function(d){ return d.students_reached; })
         .order(d3.descending);
 
+    // Filter
+    /*These selectors filter data by:
+    * - State
+    * - Resource type
+    * - Primary focus area
+    * - Primary focus subject
+    * - Poverty level
+    * - Funding status
+    * - Metro area
+    * - teacher prefix */
+    selectFieldState
+        .dimension(stateDim)
+        .group(stateGroup);
+
+    selectFieldResource
+        .dimension(resourceTypeDim)
+        .group(numProjectsByResourceType);
+
+    selectFieldArea
+        .dimension(areaDim)
+        .group(numProjectsByArea);
+
+    selectFieldSubject
+        .dimension(subjectDim)
+        .group(numProjectsBySubject);
+
+    selectFieldPoverty
+        .dimension(povertyLevelDim)
+        .group(numProjectsByPovertyLevel);
+
+    selectFieldFunding
+        .dimension(fundingStatus)
+        .group(numProjectsByFundingStatus);
+
+    selectFieldMetro
+        .dimension(metroDim)
+        .group(numProjectsByMetro);
+
+    selectFieldTeacher
+        .dimension(teacherPrefixDim)
+        .group(numProjectsByTeacherPrefix);
 
     dc.renderAll();
 

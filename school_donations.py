@@ -16,11 +16,15 @@ FIELDS = {'funding_status': True, 'school_state': True, 'resource_type': True, '
           'students_reached': True, 'primary_focus_subject': True, 'num_donors': True,
           'school_metro': True, '_id': False}
 
+# Route to display the dashboard
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("main.html")
 
-
+# Route to display a detailed data table with select menus
+@app.route("/detail")
+def detail():
+    return render_template("detail.html")
 
 @app.route("/donorsUS/projects")
 def donor_projects():
