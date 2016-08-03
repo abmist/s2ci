@@ -32,9 +32,13 @@ This part also includes a **step-by-step guide** (built with [Intro.js](https://
 As it has been mentioned before, all charts are interrelated. Any filter applied in any chart affects the rest of charts. For that purpose, the dashboard has a **button to reset filters**. It also has a **counter** that shows the records selected and the total amount of records.
 
 ![Dashboard_map](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_1_map.jpg)
+
 ![Dashboard_line_charts](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_3_line_charts.jpg)
+
 ![Dashboard_bubble_chart_and_scatter_plot](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_4_bubble_chart_scatter_plot.jpg)
+
 ![Dashboard_bar_charts_and_circle_charts](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_5_bar_charts_circle_chats.jpg)
+
 
 **List of charts**
 * **Map**: Donation in USD by state
