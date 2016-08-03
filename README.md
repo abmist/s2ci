@@ -1,9 +1,9 @@
 # Project 2 for Code Institute - School Donations Dashboard  
 
-### Introduction
+## Introduction
 This project is a **data visualization that contains interactive charts** which use a dataset from DonorsChoose.org -*a US based non-profit organization that allows individuals to donate money directly to public school classroom projects*-.  **This dashboard enables exploring and filtering data stored in a non-relational database**. 
 
-### Notes
+## Notes
 * **All charts are interrelated, so any filter applied in any chart will affect the remainder charts**. That way, **unless you wanted to apply several filters together, it’s better to reset filter after each query**.  
  
 * Given the large amount of data stored in the database, **are necessary several seconds for the data being loaded**.
@@ -14,11 +14,11 @@ This project is a **data visualization that contains interactive charts** which 
 
 * In some charts can be activated functionalities like the brush (to select periods of time) or the zoom (to focus the analysis in a specific point of time).   
 
-### Structure 
+## Structure 
 
 This site consists of **two parts** separated into different pages, **one for charts** and **the other one for a detailed data table**. 
 
-PART 1 – **Charts** 
+### PART 1 – Charts 
 
 * 1 map
 * 19 charts
@@ -60,7 +60,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * **Scatter plot**: Relation between number of students reached and number of donors.
 * **Bar chart**: Donations in USD classified by month.
 
-PART 2 - **A detailed data table with 8 data selectors**
+### PART 2 - A detailed data table with 8 data selectors
 
 * Table with 12 columns:
 	* State
@@ -85,7 +85,7 @@ PART 2 - **A detailed data table with 8 data selectors**
 	* Metro area
 	* Teacher prefix
 
-### Technology stack
+## Technology stack
 * [D3.js] (https://d3js.org/)
 * [DC.js] (https://dc-js.github.io/dc.js/)
 * [Crossfilter.js] (http://square.github.io/crossfilter/)
