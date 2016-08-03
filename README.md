@@ -75,6 +75,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 	* Primary focus area
 	* Metro area
 	* Teacher prefix
+	
 * Data selectors:
 	* State
 	* Resource type
