@@ -34,7 +34,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 ![Dashboard_reset_button_and_record_counter](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_reset_and_counter.jpg)
 
 
-**List of charts**
+**Screenshots of PART 1 - Charts**
 
 
 ![Dashboard_map](https://github.com/abmist/Project_2/blob/master/static/images/dashboard.jpg)
@@ -47,6 +47,8 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 
 ![Dashboard_scatter_plot](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_5.jpg)
 
+
+**List of charts**
 * **Map**: Donation in USD by state
 * **Bar chart**: Volume of donations with a brush to filter time periods.
 * **Big numbers**:  Summary of big figures in absolute and relative terms
@@ -78,6 +80,8 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * **Bar chart**: Donations in USD classified by month.
 
 ### PART 2 - A detailed data table with 8 data selectors
+
+**Screenshots of PART 2 - Setailed data table**
 
 ![Dashboard_detailed_data_table](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_detailed_data_table.jpg)
 
