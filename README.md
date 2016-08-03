@@ -27,17 +27,21 @@ This site consists of **two parts** separated into different pages, **one for ch
 **Charts introduction**  
 This part also includes a **step-by-step guide** (built with [Intro.js](https://www.http://introjs.com/)) that assigns an interactive pop-up tooltip to graphs where can be displayed helpful information to the user who is going to use the dashboard.
 
-![Dashboard_intro](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_2_intro.jpg)
+![Dashboard_intro](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_intro.jpg)
 
 As it has been mentioned before, all charts are interrelated. Any filter applied in any chart affects the rest of charts. For that purpose, the dashboard has a **button to reset filters**. It also has a **counter** that shows the records selected and the total amount of records.
 
-![Dashboard_map](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_1_map.jpg)
+![Dashboard_map](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_1.jpg)
 
-![Dashboard_line_charts](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_3_line_charts.jpg)
+![Dashboard_line_charts](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_2.jpg)
 
-![Dashboard_bubble_chart_and_scatter_plot](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_4_bubble_chart_scatter_plot.jpg)
+![Dashboard_bar_charts_and_circle_charts](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_3.jpg)
 
-![Dashboard_bar_charts_and_circle_charts](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_5_bar_charts_circle_chats.jpg)
+![Dashboard_bubble_chart](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_4.jpg)
+
+![Dashboard_scatter_plot](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_5.jpg)
+
+![Dashboard_reset_button_and_record_counter](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_reset_and_counter.jpg)
 
 
 **List of charts**
@@ -73,7 +77,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 
 ### PART 2 - A detailed data table with 8 data selectors
 
-![Dashboard_detailed_data_table](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_6_detailed_data_table.jpg)
+![Dashboard_detailed_data_table](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_detailed_data_table.jpg)
 
 * Table with 12 columns:
 	* State
