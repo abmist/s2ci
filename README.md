@@ -23,7 +23,7 @@ This site consists of **two parts** separated into different pages, **one for ch
 * 1 map
 * 19 charts
 * Summary of 8 big numbers
-* 
+
 
 **Charts introduction**  
 This part also includes a **step-by-step guide** (built with [Intro.js](https://www.http://introjs.com/)) that assigns an interactive pop-up tooltip to graphs where can be displayed helpful information to the user who is going to use the dashboard.
