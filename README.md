@@ -53,7 +53,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 
 
 **List of charts**
-* **Map**: Donation in USD by state
+* **Map**: Donation in USD by state. *It additionally needs a geojson file*.
 * **Bar chart**: Volume of donations with a brush to filter time periods.
 * **Big numbers**:  Summary of big figures in absolute and relative terms
 	* Number of donations (default: all)
