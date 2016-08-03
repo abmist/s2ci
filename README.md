@@ -31,12 +31,11 @@ This part also includes a **step-by-step guide** (built with [Intro.js](https://
 
 As it has been mentioned before, all charts are interrelated. Any filter applied in any chart affects the rest of charts. For that purpose, the dashboard has a **button to reset filters**. It also has a **counter** that shows the records selected and the total amount of records.
 
-
+![Dashboard_reset_button_and_record_counter](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_reset_and_counter.jpg)
 
 
 **List of charts**
 
-![Dashboard_reset_button_and_record_counter](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_reset_and_counter.jpg)
 
 ![Dashboard_map](https://github.com/abmist/Project_2/blob/master/static/images/dashboard.jpg)
 
