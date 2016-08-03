@@ -23,15 +23,18 @@ This site consists of **two parts** separated into different pages, **one for ch
 * 1 map
 * 19 charts
 * Summary of 8 big numbers
+* 
 
 **Charts introduction**  
 This part also includes a **step-by-step guide** (built with [Intro.js](https://www.http://introjs.com/)) that assigns an interactive pop-up tooltip to graphs where can be displayed helpful information to the user who is going to use the dashboard.
 
 ![Dashboard_intro](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_intro.jpg)
 
+
 As it has been mentioned before, all charts are interrelated. Any filter applied in any chart affects the rest of charts. For that purpose, the dashboard has a **button to reset filters**. It also has a **counter** that shows the records selected and the total amount of records.
 
 ![Dashboard_reset_button_and_record_counter](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_reset_and_counter.jpg)
+
 
 
 **Screenshots of PART 1 - Charts**
@@ -46,6 +49,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 ![Dashboard_bubble_chart](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_4.jpg)
 
 ![Dashboard_scatter_plot](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_5.jpg)
+
 
 
 **List of charts**
@@ -79,11 +83,14 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * **Scatter plot**: Relation between number of students reached and number of donors.
 * **Bar chart**: Donations in USD classified by month.
 
+
+
 ### PART 2 - A detailed data table with 8 data selectors
 
-**Screenshots of PART 2 - Setailed data table**
+**Screenshots of PART 2 - Data table**
 
 ![Dashboard_detailed_data_table](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_detailed_data_table.jpg)
+
 
 * Table with 12 columns:
 	* State
