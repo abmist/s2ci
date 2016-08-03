@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>School Donations Dashboard</title>
-    <link rel="stylesheet" href="./static/lib/css//bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link rel="stylesheet" href="./static/lib/css/keen-dashboards.css">
     <link rel="stylesheet" href="./static/lib/css/dc.css">
     <link rel="stylesheet" href="./static/css/custom.css">
@@ -17,12 +19,13 @@
                 <a class="navbar-brand" href="./"><b>School Donations</b> Dashboard</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href='javascript:introJs().start();' style="font-size: 14px; color: lightblue"><b>Start the tour!</b></a></li>
-                <li><a href="{{ url_for('detail') }}"><b>Data table</b></a></li>
+                <li><a href='javascript:introJs().start();' style="font-size: 14px; color: lightblue"><span class="glyphicon glyphicon-road" aria-hidden="true"></span>&nbsp;&nbsp;<b>Start the chart tour!</b></a></li>
+                <li><a href="{{ url_for('index') }}"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>&nbsp;&nbsp;<b>Charts</b></a></li>
+                <li><a href="{{ url_for('detail') }}"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>&nbsp;&nbsp;<b>Data table</b></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="row-selection" class="dc-data-count"><span class="filter-count">_</span> selected out of <span class="total-count">_</span> records</li>
-                <li><a href='javascript:dc.filterAll();dc.redrawAll();'><b>Reset All</b></a></li>  
+                <li><a href='javascript:dc.filterAll();dc.redrawAll();' title="Unless you want to apply several filters at the same time, it's recommended to reset filters after each query."><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;&nbsp;<b>Reset All</b></a></li>
             </ul>     
         </div>
     </div>
@@ -31,10 +34,9 @@
     {% endblock %}
      
     <hr>
-    <p class="small text-muted"> Data viz &#9829; from Code Institute</p>
+    <p class="small text-muted"> Data viz for Code Institute project 2</p>
 
     <script src="./static/lib/js/jquery.min.js"></script>
-    <script src="./static/lib/js/bootstrap.min.js"></script>
     <script src="./static/lib/js/crossfilter.js"></script>
     <script src="./static/lib/js/d3.js"></script>
     <script src="./static/lib/js/dc.js"></script>
