@@ -130,3 +130,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * jQuery
 * HTML5
 * CSS3
+
+## Visit the site
+Due to some limitations of the platform used to deploy the project, it's better tolower the limit of results. 
+[Dashboard] (https://hidden-journey-74967.herokuapp.com/)
