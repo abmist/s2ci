@@ -132,5 +132,6 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * CSS3
 
 ## Visit the site
-Due to some limitations of the platform used to deploy the project, it's better tolower the limit of results. 
+Note: Due to some limitations of the platform used to deploy the project, it's better to lower the limit of results. Charts would look different if all data would be loaded. Likewise, some axis may need to be adjusted. 
+
 [Dashboard] (https://hidden-journey-74967.herokuapp.com/)
