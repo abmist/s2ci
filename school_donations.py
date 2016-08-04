@@ -10,18 +10,28 @@ MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 DBS_NAME = 'donorsUSA'
 COLLECTION_NAME = 'projects'
-FIELDS = {'funding_status': True, 'school_state': True, 'resource_type': True, 'poverty_level': True,
-         'date_posted': True, 'total_donations': True, 'primary_focus_area': True,
-         'grade_level': True, 'teacher_prefix': True, 'total_price_excluding_optional_support': True,
-          'students_reached': True, 'primary_focus_subject': True, 'num_donors': True,
-          'school_metro': True, '_id': False}
+FIELDS = {'funding_status': True, 
+          'school_state': True, 
+          'resource_type': True, 
+          'poverty_level': True,
+          'date_posted': True, 
+          'total_donations': True, 
+          'primary_focus_area': True,
+          'grade_level': True, 
+          'teacher_prefix': True, 
+          'total_price_excluding_optional_support': True,
+          'students_reached': True, 
+          'primary_focus_subject': True, 
+          'num_donors': True,
+          'school_metro': True, 
+          '_id': False}
 
-# Route to display the dashboard
+# Route to display charts
 @app.route("/")
 def index():
     return render_template("main.html")
 
-# Route to display a detailed data table with select menus
+# Route to display a detailed data table with data selectors
 @app.route("/detail")
 def detail():
     return render_template("detail.html")
