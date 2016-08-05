@@ -117,16 +117,26 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 	* Teacher prefix
 
 ## Technology stack
-* [D3.js] (https://d3js.org/)
-* [DC.js] (https://dc-js.github.io/dc.js/)
+
 * [Crossfilter.js] (http://square.github.io/crossfilter/)
+	* This JavaScript library has been used to manipulate the donations data (filter, get totals, etc.) stored in the database. It enables two way data binding and slicing data easily.
+* [D3.js] (https://d3js.org/)
+	* This JavaScript library has been employed to render the interactive graphs, using HTML, CSS and SVG. 
+* [DC.js] (https://dc-js.github.io/dc.js/)
+	* This charting JavaScript library relies on Crossfilter.js and D3.js. As it's mentioned in its documentation, it allows exploration on large multi-dimensional dataset and leverages D3.js engine to render charts, providing instant feedback on user's interaction.
 * [Queue.js] (https://github.com/d3/d3-queue)
+	* This is an asynchronous helper library. Its job is to wait until the data is available from each api before passing on the combined data for processing. That functionality was not needed specifically for this project, but it’s handy having it ready for a possible modification. 
+* [Keen.js] (https://keen.io/)
+	* This JavaScript library is employed for the template of the dashboard.  
 * [Flask] (http://flask.pocoo.org/)
+	* Given that the aim of this project was to create a dashboard just for practising purpose, only two routes have been created: the first one for presenting all the charts; and the second one for a detailed table with data. Another option would have been to distribute the charts by topic creating multiple routes. However, due to the goal of the project, it seems more handy to have all of them togheter to get easily the big picture.    
 * [MongoDB] (https://www.mongodb.com/)
+	* Non relational database to work in JSON format.
 * [Intro.js] (https://www.http://introjs.com/)
+	* This library enables to create a step-by-step guide that assigns an interactive pop-up tooltip to graphs where can be displayed helpful information to the user who is going to use the dashboard.
 * [Bootstrap] (https://www.http://getbootstrap.com//)
 * Python
 * JavaScript
 * jQuery
-* HTML5
-* CSS3
+* HTML
+* CSS
