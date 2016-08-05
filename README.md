@@ -8,7 +8,7 @@ This project is a **data visualization that contains interactive charts** which 
  
 * Given the large amount of data stored in the database, **are necessary several seconds for the data being loaded**.
 
-* Not all charts displayed have a *specific meaning* (no meaningful relationship between variables used). Some of them were displayed just in order to practise.
+* Not all charts displayed have a *specific meaning* (no meaningful relationship between variables used). Some of them were displayed just in order to practise and create as many different kind of charts as possible. That is the case of the bubble chart and the scatter plot.   
 
 * Almost all charts include titles that are displayed when the mouse over any element of them. These titles show different kind of information like donations in USD, percentages, dates, etc.
 
