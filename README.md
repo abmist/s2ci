@@ -133,7 +133,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * [Keen.js] (https://keen.io/)
 	* This JavaScript library is employed for the template of the dashboard.  
 * [Flask] (http://flask.pocoo.org/)
-	* Given that the aim of this project was a dashboard -just for practising purpose-, only two routes have been created with this micro framework: the first one for presenting all the charts; and the second one for a detailed table with data. Another option would have been to distribute the charts by topic creating multiple routes. However, due to the goal of the project, it seems more handy to have all of them togheter to see easily the big picture at one glance.    
+	* Given that the aim of this project was a dashboard -just for practising purpose-, only two routes (with template) have been created to the final user with this micro framework: the first one for presenting all the charts; and the second one for a detailed table with data. Another option would have been to distribute the charts by topic creating multiple routes. However, due to the goal of the project, it seems more handy to have all of them togheter to see easily the big picture at one glance.    
 * [MongoDB] (https://www.mongodb.com/)
 	* Non relational database to work in JSON format with original data from a CSV file.
 * [Intro.js] (https://www.http://introjs.com/)
