@@ -145,5 +145,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 ## Visit the site
 Note: Due to some limitations of the platform used to deploy the project, it's better to lower the limit of results. Charts would look different if all data would be loaded. Likewise, some axis may need to be adjusted. 
 
-[Dashboard] (https://hidden-journey-74967.herokuapp.com/)
+[School Donations Dashboard] (https://hidden-journey-74967.herokuapp.com/) *Click on*
+
+#### Deployed thanks to Heroku.
 
