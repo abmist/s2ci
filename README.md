@@ -14,6 +14,10 @@ This project is a **data visualization that contains interactive charts** which 
 
 * In some charts can be activated functionalities like the brush (to select periods of time) or the zoom (to focus the analysis in a specific point of time).   
 
+## Data
+
+The original data -which come from a CSV file- are imported to a non relational database -MongoDB- and converted into JSON format. 
+
 ## Structure 
 
 This site consists of **two parts** separated into different pages, **one for charts** and **the other one for a detailed data table**. 
