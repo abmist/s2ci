@@ -131,7 +131,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * [Flask] (http://flask.pocoo.org/)
 	* Given that the aim of this project was a dashboard -just for practising purpose-, only two routes have been created with this micro framework: the first one for presenting all the charts; and the second one for a detailed table with data. Another option would have been to distribute the charts by topic creating multiple routes. However, due to the goal of the project, it seems more handy to have all of them togheter to see easily the big picture at one glance.    
 * [MongoDB] (https://www.mongodb.com/)
-	* Non relational database to work in JSON format.
+	* Non relational database to work in JSON format with original data from a CSV file.
 * [Intro.js] (https://www.http://introjs.com/)
 	* This library enables to create a step-by-step guide that assigns an interactive pop-up tooltip to graphs where can be displayed helpful information to the user who is going to use the dashboard.
 * [Bootstrap] (https://www.http://getbootstrap.com//)
