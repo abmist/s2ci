@@ -38,7 +38,7 @@ __*graph.js*__
 
 * Add a helper function to check the work with Crossfilter.js in the console. 
 
-* Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. Note: The dimension for the scatter plot needs two variables. 
+* Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. *Note*: The dimension for the scatter plot needs two variables. 
 
 * Define data groups based on dimensions (15).
 
@@ -46,11 +46,11 @@ __*graph.js*__
 
 * Calculate max and min values (9) that are used in the *domains* of some charts such as stacked lines chart or the map, among others.
 
-* Make some calculations for the big number charts (like averages) and the bubble chart.
+* Make some calculations for the big number charts (like averages) and the titles of bubble chart. *This calculations have been put here just to keep all crossfilter elements together. But they have to be created insofar they are needed.*
 
 **3. DC and D3 section**
 
-* Define **date and number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable.
+* Define **date and number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable. *Again, these elements have been put here just to keep all the formats together. But they have to be created insofar they are needed.*
 
 * Add a **counter** that shows the amount of records selected when filters are applied.
 
@@ -75,30 +75,26 @@ __*html templates*__
 * The chart template will also include a *step-by-step guide* built with [Intro.js](https://www.http://introjs.com/).
 
 
-
-**Some comments on specific charts**:
+## Useful comments on charts
 
 * The **map** needs a **geojson file**. 
 	* To manage the data from that file it's used `.overlayGeoJson()`. 
 	* To handle the map projection it's used `.projection()`. 
-	* And, for showing different colour tones depending on the number of donations, there have been employed `.colors()`, `.colorDomain()`, and `.colorCalculator()`.   
+	* To show different colour tones depending on the number of donations, there have been employed `.colors()`, `.colorDomain()`, and `.colorCalculator()`.   
 * Almost all charts include **titles** that are displayed when the mouse over any element of them. 
 	* The data presented in titles (like *donations in USD, percentages, dates,* etc.) were rendered and customised using `.title()` and `.renderTitle()`. 
-	* The **customisation** depends on each chart. Most of the times it consists in deciding which data you want to show, which format you want to use, if you want rounded figues or not, etc. 
-	* Some charts also include legends.
+	* The **customisation** depends on each chart topic. Most of the times it consists in deciding which data you want to show, which format you want to use, if you want rounded figues or not, etc. 
+	* Apart from titles, some charts also include legends.
 * In the **composite and line charts** there are available some **useful options**. *Depending on your needs you can activate them*. **Maybe it's not practical to have all of them activated in the same chart**.
 	* `.brushOn()`: This option implements focus and context zooming when you click and drag to select a time period. 
 	* `.mouseZoomable()`: This option also lets you select a time period when the mouse pointer over a point of chart.
 	* `.rangeChart()`: This option lets you to connect a chart to another one. That way, when a time period is selected -using `.brushOn()` or `.mouseZoomable()`- in any of the connected charts, the other reacts showing the same time period. If there are several line charts, they can be chained with this option.
-* The **composite chart** consists of two line charts, which details are set in `.compose()`. 
-	* In those charts may be convenient to set a secondary axis using `.rightYAxisLabel()`.  
-* The **volume chart** (below the map) shows data, but actually works more as an example of time period selector. 
-* The **stacked line chart* uses `.stack()` to add additional lines to the one displayed with `group()`.
-
-
-
-
-
+* The **composite chart** consists of two line charts (*donations in USD* and *number of donations*), which details are set in `.compose()`. 
+	* In this kind of charts it may be convenient to set a secondary axis using `.rightYAxisLabel()`.  
+* The **volume chart** (below the map) shows data, but actually works more as time period selector. 
+* The **scatter plot** needs a dimension with two variables (*students_reached* and *num_donors*). 
+* The **bubble chart** uses metrics named *bubbleVars* for the information displayed in its titles.
+* The **stacked line chart** uses `.stack()` to add additional lines to the one displayed with `group()`.
 
 ## Structure 
 

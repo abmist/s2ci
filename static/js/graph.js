@@ -22,6 +22,7 @@ function makeGraphs(error, projectsJson, statesJson) {
     });
 
     // CROSSFILTER section ---------------------------------------------------
+    
     // Helper function
     function print_filter(filter){
         var f = eval(filter);
@@ -147,7 +148,7 @@ function makeGraphs(error, projectsJson, statesJson) {
         function () { return {n:0,tot:0}; }
     );
 
-    // Groups for bubbles 
+    // Information for titles in bubble chart
     var bubblesVars = areaDim.group().reduce( 
         function (p,v) {
             ++p.count
@@ -173,6 +174,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 
 
     // DC and D3 section ---------------------------------------------------
+
     // Formats for titles
     var dateFormat = d3.time.format("%d/%m/%Y");
     var numberFormat = d3.format(",");
