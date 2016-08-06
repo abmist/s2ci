@@ -14,14 +14,32 @@ This project is a **data visualization that contains interactive charts** which 
 
 The original data -which come from a CSV file- are imported to a non relational database -MongoDB- and converted into JSON format. 
 
-## Description
+## Structure
 
 Apart from data, vendors libraries and CSS files used, this project basically consists of three parts:
 * **graph.js**: where data and charts are handled.
 * **school_donations.py**: where routes and data connection are managed.
-* **html templates** (index.html, main.html and detail.html): where data and graphs are showed.
+* **html templates** (*index.html*, *main.html* and *detail.html*): where data and graphs are showed.
+
+Project tree:
 
 ![Dashboard_tree](https://github.com/abmist/Project_2/blob/master/static/images/tree_project_2.jpg)
+
+## Summary of elements added to the initial project
+
+ | __*Added*__ | Total
+--- | --- | ---
+Dimensions | __*12*__ | 17
+Groups |  __*10*__ | 15
+Metrics |  __*16*__ | 17
+Max - Min values |  __*6*__ | 9
+Charts |  __*15*__ | 19
+Big numbers |  __*8*__ | 2
+Data selector |  __*7*__ | 1
+Maps |  __*1*__ | -
+Table|  __*1*__ | -
+Record counter |  __*1*__ | -
+
 
 ## Main steps to create this project
 
@@ -52,7 +70,7 @@ __*graph.js*__
 
 **3. DC and D3 section**
 
-* Define **date and number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable. *Again, these elements have been put here just to keep all the formats together. But they have to be created insofar they are needed.*
+* Define **number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable. *Again, these elements have been put here just to keep all the formats together. But they have to be created insofar they are needed.*
 
 * Add a **counter** that shows the amount of records selected when filters are applied.
 
@@ -99,7 +117,7 @@ __*html templates*__
 * The **bubble chart** uses metrics named *bubbleVars* for the information displayed in its titles.
 * The **stacked line chart** uses `.stack()` to add additional lines to the one displayed with `group()`.
 
-## Structure 
+## Content 
 
 This site consists of **two parts** separated into different pages, **one for charts** and **the other one for a detailed data table**. 
 

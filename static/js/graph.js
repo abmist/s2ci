@@ -7,13 +7,13 @@ function makeGraphs(error, projectsJson, statesJson) {
 
     var donorsUSProjects = projectsJson;
 
-
     // Data transformation
     var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
     donorsUSProjects.forEach(function (d) {
         d["date_posted"] = dateFormat.parse(d["date_posted"]);
         d["date_posted"].setDate(1);
         d["total_donations"] = +d["total_donations"];
+
         d["total_price_excluding_optional_support"] = +d["total_price_excluding_optional_support"];
         d["num_donors"] = +d["num_donors"];
         d["students_reached"] = +d["students_reached"];
@@ -41,6 +41,7 @@ function makeGraphs(error, projectsJson, statesJson) {
     var povertyLevelDim = ndx.dimension(function (d) { return d["poverty_level"]; }); 
     var stateDim = ndx.dimension(function (d) { return d["school_state"]; }); 
     var totalDonationsDim = ndx.dimension(function (d) { return d["total_donations"]; });
+
     var fundingStatus = ndx.dimension(function (d) { return d["funding_status"]; });
     var areaDim = ndx.dimension(function (d) { return d["primary_focus_area"]; });
     var gradeLevelDim = ndx.dimension(function (d) { return d["grade_level"]; });
@@ -59,6 +60,8 @@ function makeGraphs(error, projectsJson, statesJson) {
     var numProjectsByResourceType = resourceTypeDim.group();
     var numProjectsByPovertyLevel = povertyLevelDim.group();
     var numProjectsByFundingStatus = fundingStatus.group();
+    var stateGroup = stateDim.group();
+
     var numProjectsByDonors = donorsNumDim.group();
     var numProjectsByMetro = metroDim.group();
     var numProjectsByArea = areaDim.group();
@@ -68,13 +71,13 @@ function makeGraphs(error, projectsJson, statesJson) {
     var numProjectsByTeacherPrefix = teacherPrefixDim.group();
     var numProjectsByPrice = priceDim.group();
     var numProjectsByStudents = studentsDim.group();
-    var stateGroup = stateDim.group();
-
+    
     // All
     var all = ndx.groupAll();  
 
     // Reduce
     var totalDonationsByState = stateDim.group().reduceSum(function (d) { return d["total_donations"]; });  
+    
     var totalDonations = ndx.groupAll().reduceSum(function (d) { return d["total_donations"]; });
     var priceLayer1 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support > 0 && d.total_price_excluding_optional_support < 500) {return d.num_donors;}else{return 0;}});
     var priceLayer2 = dateDim.group().reduceSum(function(d) {if (d.total_price_excluding_optional_support >= 500 && d.total_price_excluding_optional_support < 1000) {return d.num_donors;}else{return 0;}});
@@ -96,6 +99,7 @@ function makeGraphs(error, projectsJson, statesJson) {
     var max_state = totalDonationsByState.top(1)[0].value;
     var minDate = dateDim.bottom(1)[0]["date_posted"];
     var maxDate = dateDim.top(1)[0]["date_posted"];
+
     var minStudents = studentsDim.bottom(1)[0]["students_reached"];
     var maxStudents = studentsDim.top(1)[0]["students_reached"];
     var minTotalDonations = totalDonationsDim.bottom(1)[0]["total_donations"];
@@ -176,7 +180,6 @@ function makeGraphs(error, projectsJson, statesJson) {
     // DC and D3 section ---------------------------------------------------
 
     // Formats for titles
-    var dateFormat = d3.time.format("%d/%m/%Y");
     var numberFormat = d3.format(",");
     var numberFormat2 = d3.format(".3n");
 
