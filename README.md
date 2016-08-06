@@ -25,40 +25,40 @@ Apart from data, vendors libraries and CSS files used, this project basically co
 
 **graph.js**
 
-	**Data section**
+__*1. Data section*__
 
-	* Load the data: **dataset from DonorsChoose.org** and a **geojson file -necessary to create the US map**. Although it is not strictly necessary for this project, it's been used a *queue()* function to wait until the data is available from each api before passing on the combined data for processing (it can be handy if the data source is changed).
+* Load the data: **dataset from DonorsChoose.org** and a **geojson file -necessary to create the US map**. Although it is not strictly necessary for this project, it's been used a *queue()* function to wait until the data is available from each api before passing on the combined data for processing (it can be handy if the data source is changed).
 
-	* Add a helper function to check the work with Crossfilter.js in the console. 
+* Add a helper function to check the work with Crossfilter.js in the console. 
 
-	* Carry out some transformations to clean the dataset: 
-		* Parse the date data type (from string to datetime objects).
-		* Set all projects date days to 1 using `.setDate(1)`, and use `.getMonth() +1` for months.
-		* Ensure to work with numbers, using a unary operator `+` to coerce string representation of numbers from variables such as *total_donations* or *num_donors* to number values. 
+* Carry out some transformations to clean the dataset: 
+	* Parse the date data type (from string to datetime objects).
+	* Set all projects date days to 1 using `.setDate(1)`, and use `.getMonth() +1` for months.
+	* Ensure to work with numbers, using a unary operator `+` to coerce string representation of numbers from variables such as *total_donations* or *num_donors* to number values. 
 
-	**Crossfilter section**
+__*2. Crossfilter section*__
 
-	* Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. Note: The dimension for the scatter plot needs two variables. 
+* Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. Note: The dimension for the scatter plot needs two variables. 
 
-	* Define data groups based on dimensions (15).
+* Define data groups based on dimensions (15).
 
-	* Calculate the metrics (17) that will be represented later. Some of these metrics are calculated over dimensions and others over the total. Depending on the case, there can be used more than one of these metrics in the same chart. That's what happens with *priceLayer1*, *priceLayer2* and *priceLayer3* which represent three ranges of price in the stacked line chart.  
+* Calculate the metrics (17) that will be represented later. Some of these metrics are calculated over dimensions and others over the total. Depending on the case, there can be used more than one of these metrics in the same chart. That's what happens with *priceLayer1*, *priceLayer2* and *priceLayer3* which represent three ranges of price in the stacked line chart.  
 
-	* Calculate max and min values (9) that are used in the *domains* of some charts such as stacked lines chart or the map, among others.
+* Calculate max and min values (9) that are used in the *domains* of some charts such as stacked lines chart or the map, among others.
 
-	* Make some calculations for the big number charts (like averages) and the bubble chart.
+* Make some calculations for the big number charts (like averages) and the bubble chart.
 
-	**DC and D3 section**
+__*3. DC and D3 section*__
 
-	* Define **date and number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable.
+* Define **date and number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable.
 
-	* Add a **counter** that shows the amount of records selected when filters are applied.
+* Add a **counter** that shows the amount of records selected when filters are applied.
 
-	* Create the DC.js chart objects (map, charts, big numbers, data selectors and data table), which will be binded to HTML elements of  the templates (*main.html* and *detail.html*) by means of CSS ID selectors.
+* Create the DC.js chart objects (map, charts, big numbers, data selectors and data table), which will be binded to HTML elements of  the templates (*main.html* and *detail.html*) by means of CSS ID selectors.
 
-	* Configure each individual chart passing the necessary parameters.
+* Configure each individual chart passing the necessary parameters.
 
-	* To renderthhe charts, use: `dc.renderAll();`
+* To renderthhe charts, use: `dc.renderAll();`
 
 **school_donations.py**
 	* Import the required modules.
@@ -76,9 +76,9 @@ Apart from data, vendors libraries and CSS files used, this project basically co
 
 **Some comments on specific charts**:
 
-	* Almost all charts include titles that are displayed when the mouse over any element of them. These titles show different kind of information like donations in USD, percentages, dates, etc.
+* Almost all charts include titles that are displayed when the mouse over any element of them. These titles show different kind of information like donations in USD, percentages, dates, etc.
 
-	* In some charts can be activated functionalities like the brush (to select periods of time) or the zoom (to focus the analysis in a specific point of time).    
+* In some charts can be activated functionalities like the brush (to select periods of time) or the zoom (to focus the analysis in a specific point of time).    
 	* **US map**
 		* It needs a geojson file for render the map. 
 		* 
