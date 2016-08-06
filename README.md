@@ -21,6 +21,8 @@ Apart from data, vendors libraries and CSS files used, this project basically co
 * **school_donations.py**: where routes and data connection are managed.
 * **html templates** (index.html, main.html and detail.html): where data and graphs are showed.
 
+![Dashboard_tree](https://github.com/abmist/Project_2/blob/master/static/images/tree_project_2.jpg)
+
 ## Main steps to create this project
 
 __*graph.js*__
@@ -246,14 +248,13 @@ Install the dependencies:
 
 In this project, we've used data that originally were in a CSV file called *opendata_projects_clean.csv*. It was upload to an instance of MongoDb running locally. In doing so, the content was be converted to JSON format.
 
-To do it, open your terminal and run mongoDB by running the command:
+To do that, open your terminal and run mongoDB by running the command:
  `mongod`
 
-Leave it running as it is and open another terminal window.
-
-Copy the CSV file to the same location as the directory opened in the second terminal window.
+Leave it running as it is and open another terminal window. Then copy the CSV file to the same location as the directory opened in the second terminal window.
 
 Enter the following command:
+
 `mongoimport -d donorsUSA -c projects --type csv --file opendata_projects_clean.csv --headerline`
 
 It will take a few minutes due to the big amount of records in the file. 
