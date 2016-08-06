@@ -62,9 +62,9 @@ __*graph.js*__
 
 __*school_donations.py*__
 
+* In this project it is used the micro framework Flask to build a server.
 * Import the required modules.
-* This project uses the micro framework Flask.
-* Set the connection to database (database name, fields that will be used, etc.) The current configuration is for working locally.   
+* Set the connection to database (database name, port, fields that will be used, etc.) The current configuration is for working locally.   
 * Set the routes to render the templates. 
 
 __*html templates*__
@@ -74,7 +74,7 @@ __*html templates*__
 * It will be use Keen.js for the dashboard template.
 * The chart template will also include a *step-by-step guide* built with [Intro.js](https://www.http://introjs.com/).
 
-**Note of folders**:  It’s important not to change the folder names *static* and *templates* becuase Flask expects files to be in those folders.
+**Note of folders**:  It’s important not to change the folder names *static* and *templates* because Flask expects files to be in those folders.
 
 ## Useful comments on charts
 
@@ -222,6 +222,45 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 * jQuery
 * HTML
 * CSS
+
+
+## Instructions
+
+Open your terminal and use the git clone command:
+
+`git clone https://github.com/abmist/Project_2.git`
+
+Once the project is cloned, enter in project_2 directory:
+
+`cd project_2`
+
+It's recommended to use a virtual environment (to keep isolated the dependencies required by this project). If you don't have it installed, you can do it using *pip* `pip install virtualenv`. 
+
+Here you have the instructions: [Virtual Environment - The Hitchhiker's Guide to Python] (http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+
+Create a virtual environment for this project and activate it. 
+
+Install the dependencies:
+
+`pip install -r requirements.txt`
+
+In this project, we've used data that originally were in a CSV file called *opendata_projects_clean.csv*. It was upload to an instance of MongoDb running locally. In doing so, the content was be converted to JSON format.
+
+To do it, open your terminal and run mongoDB by running the command:
+ `mongod`
+
+Leave it running as it is and open another terminal window.
+
+Copy the CSV file to the same location as the directory opened in the second terminal window.
+
+Enter the following command:
+`mongoimport -d donorsUSA -c projects --type csv --file opendata_projects_clean.csv --headerline`
+
+It will take a few minutes due to the big amount of records in the file. 
+
+If you open Mongo Management Studio you can see the uploaded data (now, in JSON format).
+
+Now you can open up your browser and in the URL bar enter `http://127.0.0.1:5000`
 
 
 ## Visit the site
