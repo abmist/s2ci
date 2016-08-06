@@ -28,7 +28,7 @@ Project tree:
 ## Summary of elements added to the initial project
 
  | Initial | __*Added*__ | Total
---- | --- | ---
+--- | --- | --- | ---
 Dimensions | 5 | __*12*__ | 17
 Groups | 5 | __*10*__ | 15
 Metrics | 1 | __*16*__ | 17
