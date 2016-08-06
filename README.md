@@ -78,15 +78,22 @@ __*html templates*__
 
 **Some comments on specific charts**:
 
-* The map needs a geojson file. To manage the data from that file it's used `.overlayGeoJson()`. To handle the map projection it's used `.projection()`. And, for showing different colour tones depending on the number of donations, there have been employed `.colors()`, `.colorDomain()`, `.colorCalculator()`.   
-* Almost all charts include titles that are displayed when the mouse over any element of them. The data presented in titles (like donations in USD, percentages, dates, etc.) were rendered and customised using `.title()` and `.renderTitle()`. The customisation depends on each chart. Most of the times it consists in deciding which data you want to show, which format you want to use, if you want rounded figues or not, etc. Some charts also include legends.
-* In the composite and line charts there are available some useful options. Depending on your needs you can activate them. Maybe it's not practical to have all of them activated in the same chart.
+* The **map** needs a **geojson file**. 
+	* To manage the data from that file it's used `.overlayGeoJson()`. 
+	* To handle the map projection it's used `.projection()`. 
+	* And, for showing different colour tones depending on the number of donations, there have been employed `.colors()`, `.colorDomain()`, and `.colorCalculator()`.   
+* Almost all charts include **titles** that are displayed when the mouse over any element of them. 
+	* The data presented in titles (like *donations in USD, percentages, dates,* etc.) were rendered and customised using `.title()` and `.renderTitle()`. 
+	* The **customisation** depends on each chart. Most of the times it consists in deciding which data you want to show, which format you want to use, if you want rounded figues or not, etc. 
+	* Some charts also include legends.
+* In the **composite and line charts** there are available some **useful options**. *Depending on your needs you can activate them*. **Maybe it's not practical to have all of them activated in the same chart**.
 	* `.brushOn()`: This option implements focus and context zooming when you click and drag to select a time period. 
 	* `.mouseZoomable()`: This option also lets you select a time period when the mouse pointer over a point of chart.
 	* `.rangeChart()`: This option lets you to connect a chart to another one. That way, when a time period is selected -using `.brushOn()` or `.mouseZoomable()`- in any of the connected charts, the other reacts showing the same time period. If there are several line charts, they can be chained with this option.
-* The composite chart consists of two line charts, which details are set in `.compose()`. In those charts may be convenient to set a secondary axis using `.rightYAxisLabel()`.  
-* The volume chart (below the map) shows data, but actually works more as an example of time period selector. 
-* The stacked line charts uses `.stack()` to add additional lines to the one displayed with `group()`.
+* The **composite chart** consists of two line charts, which details are set in `.compose()`. 
+	* In those charts may be convenient to set a secondary axis using `.rightYAxisLabel()`.  
+* The **volume chart** (below the map) shows data, but actually works more as an example of time period selector. 
+* The **stacked line chart* uses `.stack()` to add additional lines to the one displayed with `group()`.
 
 
 
