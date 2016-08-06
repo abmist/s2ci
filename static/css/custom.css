@@ -8,7 +8,6 @@
 
 .dc-chart g.row text {
    fill: black;
-   font-weight: ;
    font-size: 12px;
    color: #1a1a1a;  
 }
@@ -29,7 +28,6 @@
 .dc-chart .pie-slice {
     fill: #fff;
     font-size: 12px;
-    font-weight: ;
     cursor: pointer;
 }
 
@@ -100,6 +98,7 @@ body.application .navbar-inverse, .keen-dashboard .navbar-inverse {
     background-color: rgba(48,59,69, 0.95); 
 }
 
+/* Intro.js custom rules */
 div.introjs-tooltiptext {
     font-family: Roboto;
    font-weight: normal;
@@ -116,6 +115,5 @@ div.introjs-tooltiptext {
 }
 
 #intro-start {
-  font-size: 14px; 
   color: lightblue
 }

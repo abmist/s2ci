@@ -18,42 +18,63 @@ This project is a **data visualization that contains interactive charts** which 
 
 The original data -which come from a CSV file- are imported to a non relational database -MongoDB- and converted into JSON format. 
 
+## Description
+
+Apart from data, vendors libraries and CSS files used, this project basically consists of three parts:
+* **graph.js**: where data and charts are handled.
+* **school_donations.py**: where routes and data connection are managed.
+* **html templates(index.html, main.html and details.html)**: where data and graphs are showed.
+
 ## Main steps to create this project
 
 **graph.js**
 
-* We load the data. In our case, we'll load the **dataset from DonorsChoose.org** and a **geojson file that we'll use to create the US map**. Although it is not strictly necessary for this project, we've used a *queue()* function to wait until the data is available from each api before passing on the combined data for processing (it can be handy if we change the data source).
+* Load the data: **dataset from DonorsChoose.org** and a **geojson file -necessary to create the US map**. Although it is not strictly necessary for this project, it's been used a *queue()* function to wait until the data is available from each api before passing on the combined data for processing (it can be handy if the data source is changed).
 
-* We add a helper function that we can use during the process to check our work with Crossfilter.js in the console. 
+* Add a helper function to check the work with Crossfilter.js in the console. 
 
-* We carry out some transformations to clean the dataset. 
-	* We parse the date data type (from string to datetime objects).
-	* We set all projects date days to 1 using `.setDate(1)` and we use `.getMonth() +1` for months.
-	* We ensure to work with numbers, using a unary operator `+` to coerce string representation of numbers from variables like *total_donations* or *num_donors* to number values. 
+* Carry out some transformations to clean the dataset: 
+	* Parse the date data type (from string to datetime objects).
+	* Set all projects date days to 1 using `.setDate(1)`, and use `.getMonth() +1` for months.
+	* Ensure to work with numbers, using a unary operator `+` to coerce string representation of numbers from variables such as *total_donations* or *num_donors* to number values. 
 
-* We create a Crossfilter instance and the dimensions that we'll need based on that instance. In our project, we'll create 17 dimensions. Note: The dimension for the scatter plot needs two variables. 
+* Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. Note: The dimension for the scatter plot needs two variables. 
 
-* We define data groups based on dimensions. In this project, 15 groups.
+* Define data groups based on dimensions (15).
 
-* We calculate the metrics (17) that we'll represent later with charts. Some of these metrics are calculated over dimensions and others over the total. Depending on the case, there can be used more than one of these metrics in the same chart. That's what happens with *priceLayer1*, *priceLayer2* and *priceLayer3* which represent three ranges of price in the stacked line chart.  
+* Calculate the metrics (17) that will be represented later. Some of these metrics are calculated over dimensions and others over the total. Depending on the case, there can be used more than one of these metrics in the same chart. That's what happens with *priceLayer1*, *priceLayer2* and *priceLayer3* which represent three ranges of price in the stacked line chart.  
 
-* We calculate max and min (9), that are used in the domains of some charts such as stacked lines chart or the map, among others.
+* Calculate max and min values (9) that are used in the *domains* of some charts such as stacked lines chart or the map, among others.
 
-* We define date and number formats that we'll use in the titles of charts, to make them more readable.
+* Define **date and number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable.
 
-* We make some calculations for the big number charts (like averages) and the bubble chart.
+* Make some calculations for the big number charts (like averages) and the bubble chart.
 
-* We add a counter that shows the amount of records selected when filters are applied.
+* Add a **counter** that shows the amount of records selected when filters are applied.
 
-* We create the DC.js chart objects (map, charts, big numbers, data selectors and data table), which will be binded to HTML elements of  the templates (*main.html* and *detail.html*) by means of CSS ID selectors.
+* Create the DC.js chart objects (map, charts, big numbers, data selectors and data table), which will be binded to HTML elements of  the templates (*main.html* and *detail.html*) by means of CSS ID selectors.
 
-* We configure each individual chart passing the necessary parameters.
+* Cnfigure each individual chart passing the necessary parameters.
 
-* After all charts, to render them, we use: `dc.renderAll();`
+* After all charts, to render them, use: `dc.renderAll();`
 
-* **Some comments on specific charts**: 
+**school_donations.py**
+* Import the required modules.
+* This project uses the micro framework Flask.
+* Set the connection with database (database name, fields that will be used, etc.) The current configuration is for working locally.   
+* Set the routes to render the templates. 
+
+**html templates**
+* Create *index.html* which acts as a shell where the other templates are injected.
+* Cretate divs in *main.html* and *details.html* with ID where DC.js charts will be binded. 
+* It will be use Keen.js for the dashboard template.
+* The chart template will also include a *step-by-step guide* built with [Intro.js](https://www.http://introjs.com/).
+
+
+
+ **Some comments on specific charts**: 
 	* **US map**
-		* It need a geojson file for render the map. 
+		* It needs a geojson file for render the map. 
 		* 
 
 
@@ -74,7 +95,7 @@ This site consists of **two parts** separated into different pages, **one for ch
 
 
 **Charts introduction**  
-This part also includes a **step-by-step guide** (built with [Intro.js](https://www.http://introjs.com/)) that assigns an interactive pop-up tooltip to graphs where can be displayed helpful information to the user who is going to use the dashboard.
+This part also includes a **step-by-step guide** (built with Intro.js) that assigns an interactive pop-up tooltip to graphs where can be displayed helpful information to the user who is going to use the dashboard.
 
 ![Dashboard_intro](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_intro.jpg)
 
