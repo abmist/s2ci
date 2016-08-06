@@ -46,7 +46,7 @@ __*graph.js*__
 
 * Calculate max and min values (9) that are used in the *domains* of some charts such as stacked lines chart or the map, among others.
 
-* Make some calculations for the big number charts (like averages) and the titles of bubble chart. *This calculations have been put here just to keep all crossfilter elements together. But they have to be created insofar they are needed.*
+* Make some calculations for the big number charts (like averages) and the titles of bubble chart. *These calculations have been put here just to keep all crossfilter elements together. But they have to be created insofar they are needed.*
 
 **3. DC and D3 section**
 
@@ -74,6 +74,7 @@ __*html templates*__
 * It will be use Keen.js for the dashboard template.
 * The chart template will also include a *step-by-step guide* built with [Intro.js](https://www.http://introjs.com/).
 
+**Note of folders**:  It’s important not to change the folder names *static* and *templates* becuase Flask expects files to be in those folders.
 
 ## Useful comments on charts
 
@@ -88,7 +89,7 @@ __*html templates*__
 * In the **composite and line charts** there are available some **useful options**. *Depending on your needs you can activate them*. **Maybe it's not practical to have all of them activated in the same chart**.
 	* `.brushOn()`: This option implements focus and context zooming when you click and drag to select a time period. 
 	* `.mouseZoomable()`: This option also lets you select a time period when the mouse pointer over a point of chart.
-	* `.rangeChart()`: This option lets you to connect a chart to another one. That way, when a time period is selected -using `.brushOn()` or `.mouseZoomable()`- in any of the connected charts, the other reacts showing the same time period. If there are several line charts, they can be chained with this option.
+	* `.rangeChart()`: This option lets you connect a chart to another one. That way, when a time period is selected -using `.brushOn()` or `.mouseZoomable()`- in any of the connected charts, the other reacts showing the same time period. If there are several line charts, they can be chained with this option.
 * The **composite chart** consists of two line charts (*donations in USD* and *number of donations*), which details are set in `.compose()`. 
 	* In this kind of charts it may be convenient to set a secondary axis using `.rightYAxisLabel()`.  
 * The **volume chart** (below the map) shows data, but actually works more as time period selector. 
@@ -133,7 +134,6 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 ![Dashboard_scatter_plot](https://github.com/abmist/Project_2/blob/master/static/images/dashboard_5.jpg)
 
 
-
 **List of charts**
 * **Map**: Donation in USD by state. *It additionally needs a geojson file*.
 * **Bar chart**: Volume of donations with a brush to filter time periods.
@@ -146,9 +146,9 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 	* Average students reached (default: all)
 	* Number of donors (default: all)
 	* Average donors (default: all)
-* **Line chart with zoom**: Number of donations and US dollars donated.
+* **Composite (line) chart**: Number of donations and US dollars donated.
 * **Pie chart**: Number of donations by funding status.
-* **Stack line chart**:  Price excluding optional support disaggregated by ranges (<$500; $500-$1000; >=$1000)
+* **Stacked line chart**:  Price excluding optional support disaggregated by ranges (<$500; $500-$1000; >=$1000)
 * **Pie chart**: Number of projects classified by teacher prefix.
 * **Row chart**: Donations in USD classified by resource type.
 * **Row chart**: Donations in USD classified by poverty level.
