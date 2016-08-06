@@ -27,18 +27,20 @@ Project tree:
 
 ## Summary of elements added to the initial project
 
- | __*Added*__ | Total
+ | Initial | __*Added*__ | Total
 --- | --- | ---
-Dimensions | __*12*__ | 17
-Groups |  __*10*__ | 15
-Metrics |  __*16*__ | 17
-Max - Min values |  __*6*__ | 9
-Charts |  __*15*__ | 19
-Big numbers |  __*8*__ | 2
-Data selector |  __*7*__ | 1
-Maps |  __*1*__ | -
-Table|  __*1*__ | -
-Record counter |  __*1*__ | -
+Dimensions | 5 | __*12*__ | 17
+Groups | 5 | __*10*__ | 15
+Metrics | 1 | __*16*__ | 17
+Max - Min values | 3 |  __*6*__ | 9
+Charts | 4 |  __*15*__ | 19
+Big numbers | 2 | __*6*__ | 8
+Data selector | 1 | __*7*__ | 8
+Maps | - | __*1*__ | 1
+Table| - | __*1*__ | 1
+Record counter | - | __*1*__ | 1
+
+
 
 
 ## Main steps to create this project

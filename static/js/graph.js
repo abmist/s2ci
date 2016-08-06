@@ -21,7 +21,7 @@ function makeGraphs(error, projectsJson, statesJson) {
         d.month = d["date_posted"].getMonth() +1;
     });
 
-    // CROSSFILTER section ---------------------------------------------------
+    // CROSSFILTER section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     // Helper function
     function print_filter(filter){
@@ -177,7 +177,7 @@ function makeGraphs(error, projectsJson, statesJson) {
     var expCount = function(d) { return d.n; };
 
 
-    // DC and D3 section ---------------------------------------------------
+    // DC and D3 section >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     // Formats for titles
     var numberFormat = d3.format(",");
@@ -193,6 +193,8 @@ function makeGraphs(error, projectsJson, statesJson) {
         all: 'All records selected. Please click on the graph to apply filters.'}); 
 
     // Charts variables: chart binding to HTML elements by CSS ID selectors
+
+    // Displayed in detail.html
     var tableData = dc.dataTable("#data-table");
     var selectFieldState = dc.selectMenu('#menu-select-state');
     var selectFieldResource = dc.selectMenu('#menu-select-resource');
@@ -202,6 +204,8 @@ function makeGraphs(error, projectsJson, statesJson) {
     var selectFieldFunding = dc.selectMenu('#menu-select-funding');
     var selectFieldMetro = dc.selectMenu('#menu-select-metro');
     var selectFieldTeacher = dc.selectMenu('#menu-select-teacher');
+
+    // Displayed in main.html
     var numberProjectsND = dc.numberDisplay("#number-projects-nd");
     var totalDonationsND = dc.numberDisplay("#total-donations-nd");
     var fundingStatusChart = dc.pieChart("#funding-chart");
@@ -251,7 +255,7 @@ function makeGraphs(error, projectsJson, statesJson) {
  
     // Volume of donation ------------------------
     /* This chart shows the volume of donations. 
-     * The brush lets filter time periods. */   
+     * The brush enables filter time periods. */   
     volumeChart
         .width(600)
         .height(40)
@@ -270,7 +274,7 @@ function makeGraphs(error, projectsJson, statesJson) {
             moveChart.filter(chart.filter());
         });
 
-    // Number display ------------------------
+    // Number display -----
     /* This is a summary of big figures in absolute and relative terms. */
 
     // Number of donations
