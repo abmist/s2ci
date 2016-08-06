@@ -19,7 +19,7 @@ The original data -which come from a CSV file- are imported to a non relational 
 Apart from data, vendors libraries and CSS files used, this project basically consists of three parts:
 * **graph.js**: where data and charts are handled.
 * **school_donations.py**: where routes and data connection are managed.
-* **html templates** (index.html, main.html and details.html): where data and graphs are showed.
+* **html templates** (index.html, main.html and detail.html): where data and graphs are showed.
 
 ## Main steps to create this project
 
@@ -29,14 +29,14 @@ __*graph.js*__
 
 * Load the data: **dataset from DonorsChoose.org** and a **geojson file -necessary to create the US map**. Although it is not strictly necessary for this project, it's been used a *queue()* function to wait until the data is available from each api before passing on the combined data for processing (it can be handy if the data source is changed).
 
-* Add a helper function to check the work with Crossfilter.js in the console. 
-
 * Carry out some transformations to clean the dataset: 
 	* Parse the date data type (from string to datetime objects).
 	* Set all projects date days to 1 using `.setDate(1)`, and use `.getMonth() +1` for months.
 	* Ensure to work with numbers, using a unary operator `+` to coerce string representation of numbers from variables such as *total_donations* or *num_donors* to number values. 
 
 **2. Crossfilter section**
+
+* Add a helper function to check the work with Crossfilter.js in the console. 
 
 * Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. Note: The dimension for the scatter plot needs two variables. 
 
@@ -58,7 +58,7 @@ __*graph.js*__
 
 * Configure each individual chart passing the necessary parameters.
 
-* To renderthhe charts, use: `dc.renderAll();`
+* To render the charts, use: `dc.renderAll();`
 
 __*school_donations.py*__
 
@@ -70,7 +70,7 @@ __*school_donations.py*__
 __*html templates*__
 
 * Create *index.html* which acts as a shell where the other templates are injected.
-* Cretate divs in *main.html* and *details.html* with ID where DC.js charts will be binded. 
+* Cretate divs in *main.html* and *detail.html* with ID where DC.js charts will be binded. 
 * It will be use Keen.js for the dashboard template.
 * The chart template will also include a *step-by-step guide* built with [Intro.js](https://www.http://introjs.com/).
 
@@ -78,13 +78,15 @@ __*html templates*__
 
 **Some comments on specific charts**:
 
-* Almost all charts include titles that are displayed when the mouse over any element of them. These titles show different kind of information like donations in USD, percentages, dates, etc.
-
-* In some charts can be activated functionalities like the brush (to select periods of time) or the zoom (to focus the analysis in a specific point of time).    
-	* **US map**
-		* It needs a geojson file for render the map. 
-		* 
-
+* The map needs a geojson file. To manage the data from that file it's used `.overlayGeoJson()`. To handle the map projection it's used `.projection()`. And, for showing different colour tones depending on the number of donations, there have been employed `.colors()`, `.colorDomain()`, `.colorCalculator()`.   
+* Almost all charts include titles that are displayed when the mouse over any element of them. The data presented in titles (like donations in USD, percentages, dates, etc.) were rendered and customised using `.title()` and `.renderTitle()`. The customisation depends on each chart. Most of the times it consists in deciding which data you want to show, which format you want to use, if you want rounded figues or not, etc. Some charts also include legends.
+* In the composite and line charts there are available some useful options. Depending on your needs you can activate them. Maybe it's not practical to have all of them activated in the same chart.
+	* `.brushOn()`: This option implements focus and context zooming when you click and drag to select a time period. 
+	* `.mouseZoomable()`: This option also lets you select a time period when the mouse pointer over a point of chart.
+	* `.rangeChart()`: This option lets you to connect a chart to another one. That way, when a time period is selected -using `.brushOn()` or `.mouseZoomable()`- in any of the connected charts, the other reacts showing the same time period. If there are several line charts, they can be chained with this option.
+* The composite chart consists of two line charts, which details are set in `.compose()`. In those charts may be convenient to set a secondary axis using `.rightYAxisLabel()`.  
+* The volume chart (below the map) shows data, but actually works more as an example of time period selector. 
+* The stacked line charts uses `.stack()` to add additional lines to the one displayed with `group()`.
 
 
 
