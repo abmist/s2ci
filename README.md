@@ -25,7 +25,7 @@ Project tree:
 
 ![Dashboard_tree](https://github.com/abmist/Project_2/blob/master/static/images/tree_project_2.jpg)
 
-## Summary of elements added to the initial project
+## Summary of main elements added to the initial project
 
  | Initial | __*Added*__ | Total
 --- | --- | --- | ---
@@ -39,8 +39,9 @@ Data selector | 1 | __*7*__ | 8
 Maps | - | __*1*__ | 1
 Table| - | __*1*__ | 1
 Record counter | - | __*1*__ | 1
+Templates | 1 | __*1*__ | 2
 
-
+Most of the elements added appear in graph.js separated from the initial ones by a blank line, but not charts (apart from a bar chart, two row charts and a pie chart, the remainder charts have been added). 
 
 
 ## Main steps to create this project
@@ -60,13 +61,13 @@ __*graph.js*__
 
 * Add a helper function to check the work with Crossfilter.js in the console. 
 
-* Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. *Note*: The dimension for the scatter plot needs two variables. 
+* Create a Crossfilter instance and the dimensions based on that instance. *Note*: The dimension for the scatter plot needs two variables. 
 
-* Define data groups based on dimensions (15).
+* Define data groups based on dimensions.
 
-* Calculate the metrics (17) that will be represented later. Some of these metrics are calculated over dimensions and others over the total. Depending on the case, there can be used more than one of these metrics in the same chart. That's what happens with *priceLayer1*, *priceLayer2* and *priceLayer3* which represent three ranges of price in the stacked line chart.  
+* Calculate the metrics that will be represented later. Some of these metrics are calculated over dimensions and others over the total. Depending on the case, there can be used more than one of these metrics in the same chart. That's what happens with *priceLayer1*, *priceLayer2* and *priceLayer3* which represent three ranges of price in the stacked line chart.  
 
-* Calculate max and min values (9) that are used in the *domains* of some charts such as stacked lines chart or the map, among others.
+* Calculate max and min values that are used in the *domains* of some charts such as stacked lines chart or the map, among others.
 
 * Make some calculations for the big number charts (like averages) and the titles of bubble chart. *These calculations have been put here just to keep all crossfilter elements together. But they have to be created insofar they are needed.*
 
