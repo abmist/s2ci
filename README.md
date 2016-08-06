@@ -18,6 +18,45 @@ This project is a **data visualization that contains interactive charts** which 
 
 The original data -which come from a CSV file- are imported to a non relational database -MongoDB- and converted into JSON format. 
 
+## Main steps to create this project
+
+**graph.js**
+
+We load the data. In our case, we'll load the **dataset from DonorsChoose.org** and a **geojson file that we'll use to create the US map**. Although it is not strictly necessary for this project, we've used a *queue()* function to wait until the data is available from each api before passing on the combined data for processing (it can be handy if we change the data source).
+
+We add a helper function that we can use during the process to check our work with Crossfilter.js in the console. 
+
+We carry out some transformations to clean the dataset. 
+* We parse the date data type (from string to datetime objects).
+* We set all projects date days to 1 using *.setDate(1)* and we use *.getMonth() +1* for months.
+* We ensure to work with numbers, using a unary operator to coerce string representation of numbers from variables like *total_donations* or *num_donors* to number values. 
+
+We create a Crossfilter instance and the dimensions that we'll need based on that instance. In our project, we'll create 17 dimensions. Note: The dimension for the scatter plot need two variables. 
+
+We define data groups based on dimensions. In this project, 15 groups.
+
+We calculate the metrics (17) that we'll represent later with charts. Some of these metrics are calculated over dimensions and others over the total. Depending on the case, there can be used more than one of these metrics in the same chart. That's what happens with *priceLayer1*, *priceLayer2* and *priceLayer3* which represent three ranges of price in the stacked line chart.  
+
+We calculate max and min (9), that are used in the domains of some charts such as stacked lines chart or the map, among others.
+
+We define date and number formats that we'll use in the titles of charts, to make them more readable.
+
+We make some calculations for the big number charts (like averages) and the bubble chart.
+
+We add a counter that shows the amount of records selected when filters are applied.
+
+We create the DC.js chart objects (map, charts, big numbers, data selectors and data table), which will be binded to HTML elements of  the templates (*main.html* and *detail.html*) by means of CSS ID selectors.
+
+We configure each individual chart passing the necessary parameters.
+
+After all charts, to render them, we use: `dc.renderAll();`
+
+
+
+
+
+
+
 ## Structure 
 
 This site consists of **two parts** separated into different pages, **one for charts** and **the other one for a detailed data table**. 
@@ -123,7 +162,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 ## Technology stack
 
 * [Crossfilter.js] (http://square.github.io/crossfilter/)
-	* This JavaScript library has been used to manipulate the donations data (filter, get totals, etc.) stored in the database. It usefull because it enables two way data binding and  allows slicing data easily.
+	* This JavaScript library has been used to manipulate the donations data (filtering, grouping, aggregating, etc.) stored in the database. It usefull because it enables two way data binding and  allows slicing data easily.
 * [D3.js] (https://d3js.org/)
 	* This JavaScript library has been employed to render the interactive graphs -using HTML, CSS and SVG. 
 * [DC.js] (https://dc-js.github.io/dc.js/)
@@ -149,7 +188,6 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 ## Visit the site
 Note: Due to some limitations of the platform used to deploy the project, it's better to lower the limit of results. Charts would look different if all data would be loaded. Likewise, some axis may need to be adjusted. 
 
-*Click on*: [School Donations Dashboard] (https://hidden-journey-74967.herokuapp.com/) 
-
 Deployed thanks to Heroku.
 
+*Click on*: [School Donations Dashboard] (https://hidden-journey-74967.herokuapp.com/) 
