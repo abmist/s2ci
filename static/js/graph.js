@@ -99,11 +99,6 @@ function makeGraphs(error, projectsJson, statesJson) {
     var maxTotalDonations = totalDonationsDim.top(1)[0]["total_donations"];
     var minDonors = donorsNumDim.bottom(1)[0]["num_donors"];
     var maxDonors = donorsNumDim.top(1)[0]["num_donors"];
-
-    // Formats
-    var dateFormat = d3.time.format("%d/%m/%Y");
-    var numberFormat = d3.format(",");
-    var numberFormat2 = d3.format(".3n");
  
     // Calculus for average donations
     var meanDonationsGroup = ndx.groupAll().reduce(
@@ -173,6 +168,11 @@ function makeGraphs(error, projectsJson, statesJson) {
 
     var average = function(d) { return d.n ? d.tot / d.n : 0; };
     var expCount = function(d) { return d.n; };
+
+     // Formats
+    var dateFormat = d3.time.format("%d/%m/%Y");
+    var numberFormat = d3.format(",");
+    var numberFormat2 = d3.format(".3n");
 
     // Records counter
     /* This counter shows the amount of records selected after applying a filter. */

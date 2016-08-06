@@ -23,9 +23,9 @@ Apart from data, vendors libraries and CSS files used, this project basically co
 
 ## Main steps to create this project
 
-**graph.js**
+__*graph.js*__
 
-__*1. Data section*__
+**1. Data section**
 
 * Load the data: **dataset from DonorsChoose.org** and a **geojson file -necessary to create the US map**. Although it is not strictly necessary for this project, it's been used a *queue()* function to wait until the data is available from each api before passing on the combined data for processing (it can be handy if the data source is changed).
 
@@ -36,7 +36,7 @@ __*1. Data section*__
 	* Set all projects date days to 1 using `.setDate(1)`, and use `.getMonth() +1` for months.
 	* Ensure to work with numbers, using a unary operator `+` to coerce string representation of numbers from variables such as *total_donations* or *num_donors* to number values. 
 
-__*2. Crossfilter section*__
+**2. Crossfilter section**
 
 * Create a Crossfilter instance and the dimensions based on that instance. In this project, there're 17 dimensions. Note: The dimension for the scatter plot needs two variables. 
 
@@ -48,7 +48,7 @@ __*2. Crossfilter section*__
 
 * Make some calculations for the big number charts (like averages) and the bubble chart.
 
-__*3. DC and D3 section*__
+**3. DC and D3 section**
 
 * Define **date and number formats** that will be used in the titles of charts (when the mouse over them), to make them more readable.
 
@@ -60,17 +60,19 @@ __*3. DC and D3 section*__
 
 * To renderthhe charts, use: `dc.renderAll();`
 
-**school_donations.py**
-	* Import the required modules.
-	* This project uses the micro framework Flask.
-	* Set the connection to database (database name, fields that will be used, etc.) The current configuration is for working locally.   
-	* Set the routes to render the templates. 
+__*school_donations.py*__
 
-**html templates**
-	* Create *index.html* which acts as a shell where the other templates are injected.
-	* Cretate divs in *main.html* and *details.html* with ID where DC.js charts will be binded. 
-	* It will be use Keen.js for the dashboard template.
-	* The chart template will also include a *step-by-step guide* built with [Intro.js](https://www.http://introjs.com/).
+* Import the required modules.
+* This project uses the micro framework Flask.
+* Set the connection to database (database name, fields that will be used, etc.) The current configuration is for working locally.   
+* Set the routes to render the templates. 
+
+__*html templates*__
+
+* Create *index.html* which acts as a shell where the other templates are injected.
+* Cretate divs in *main.html* and *details.html* with ID where DC.js charts will be binded. 
+* It will be use Keen.js for the dashboard template.
+* The chart template will also include a *step-by-step guide* built with [Intro.js](https://www.http://introjs.com/).
 
 
 
