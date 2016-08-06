@@ -25,25 +25,6 @@ Project tree:
 
 ![Dashboard_tree](https://github.com/abmist/Project_2/blob/master/static/images/tree_project_2.jpg)
 
-## Summary of main elements added to the initial project
-
- | Initial | __*Added*__ | Total
---- | --- | --- | ---
-Dimensions | 5 | __*12*__ | 17
-Groups | 5 | __*10*__ | 15
-Metrics | 1 | __*16*__ | 17
-Max - Min values | 3 |  __*6*__ | 9
-Charts | 4 |  __*15*__ | 19
-Big numbers | 2 | __*6*__ | 8
-Data selector | 1 | __*7*__ | 8
-Maps | - | __*1*__ | 1
-Table| - | __*1*__ | 1
-Record counter | - | __*1*__ | 1
-Templates | 1 | __*1*__ | 2
-
-Most of the elements added appear in graph.js separated from the initial ones by a blank line, but not charts (apart from a bar chart, two row charts and a pie chart, the remainder charts have been added). 
-
-
 ## Main steps to create this project
 
 __*graph.js*__
@@ -119,6 +100,24 @@ __*html templates*__
 * The **scatter plot** needs a dimension with two variables (*students_reached* and *num_donors*). 
 * The **bubble chart** uses metrics named *bubbleVars* for the information displayed in its titles.
 * The **stacked line chart** uses `.stack()` to add additional lines to the one displayed with `group()`.
+
+## Summary of main elements added to the initial project
+
+ | Initial | __*Added*__ | Total
+--- | --- | --- | ---
+Dimensions | 5 | __*12*__ | 17
+Groups | 5 | __*10*__ | 15
+Metrics | 1 | __*16*__ | 17
+Max - Min values | 3 |  __*6*__ | 9
+Charts | 4 |  __*15*__ | 19
+Big numbers | 2 | __*6*__ | 8
+Data selector | 1 | __*7*__ | 8
+Maps | - | __*1*__ | 1
+Table| - | __*1*__ | 1
+Record counter | - | __*1*__ | 1
+Templates | 1 | __*1*__ | 2
+
+Most of the elements that have been added appear in *graph.js* separated from the initial ones by a blank line, but not charts. Apart from a bar chart, two row charts and a pie chart, *the remainder charts have been added*. 
 
 ## Content 
 
