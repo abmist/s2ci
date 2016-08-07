@@ -88,7 +88,7 @@ __*html templates*__
 	* To show different colour tones depending on the number of donations, there have been employed `.colors()`, `.colorDomain()`, and `.colorCalculator()`.   
 * Almost all charts include **titles** that are displayed when the mouse over any element of them. 
 	* The data presented in titles (like *donations in USD, percentages, dates,* etc.) were rendered and customised using `.title()` and `.renderTitle()`. 
-	* The **customisation** depends on each chart topic. Most of the times it consists in deciding which data you want to show, which format you want to use, if you want rounded figues or not, etc. 
+	* The **customisation** depends on each chart topic. Most of the times it consists in deciding which data you want to show, which format you want to use, if you want rounded figrues or not, etc. 
 	* Apart from titles, some charts also include legends.
 * In the **composite and line charts** there are available some **useful options**. *Depending on your needs you can activate them*. **Maybe it's not practical to have all of them activated in the same chart**.
 	* `.brushOn()`: This option implements focus and context zooming when you click and drag to select a time period. 
@@ -160,7 +160,7 @@ As it has been mentioned before, all charts are interrelated. Any filter applied
 
 Type | Title |
 --- | --- 
-**Map** | Donation in USD by state. 
+**Map** | Donation in USD by state
 **Bar chart** | Volume of donations with a brush to filter time periods
 **Big numbers** | Number of donations (default: all)
 	| Percentage of donations (default: 100%)
