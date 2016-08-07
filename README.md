@@ -163,14 +163,14 @@ Type | Title |
 **Map** | Donation in USD by state. 
 **Bar chart** | Volume of donations with a brush to filter time periods
 **Big numbers** |  Summary of big figures in absolute and relative terms
-	* Number of donations (default: all)
-	* Percentage of donations (default: 100%)
-	* Donations in USD (default: all)
-	* Average donations in USD (default: all)
-	* Number of students reached (default: all)
-	* Average students reached (default: all)
-	* Number of donors (default: all)
-	* Average donors (default: all)
+	| Number of donations (default: all)
+	| Percentage of donations (default: 100%)
+	| Donations in USD (default: all)
+	| Average donations in USD (default: all)
+	| Number of students reached (default: all)
+	| Average students reached (default: all)
+	| Number of donors (default: all)
+	| Average donors (default: all)
 **Composite (line) chart** | Number of donations and US dollars donated
 **Pie chart** | Number of donations by funding status
 Number of projects by teacher prefix
