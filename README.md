@@ -127,7 +127,7 @@ This site consists of **two parts** separated into different pages, **one for ch
 
 * 1 map
 * 19 charts
-* Summary of 8 big numbers
+* Summary of 8 big numbers (big figures in absolute and relative terms)
 
 
 **Charts introduction**  
@@ -162,8 +162,7 @@ Type | Title |
 --- | --- 
 **Map** | Donation in USD by state. 
 **Bar chart** | Volume of donations with a brush to filter time periods
-**Big numbers** |  Summary of big figures in absolute and relative terms
-	| Number of donations (default: all)
+**Big numbers** | Number of donations (default: all)
 	| Percentage of donations (default: 100%)
 	| Donations in USD (default: all)
 	| Average donations in USD (default: all)
@@ -172,30 +171,24 @@ Type | Title |
 	| Number of donors (default: all)
 	| Average donors (default: all)
 **Composite (line) chart** | Number of donations and US dollars donated
+**Stacked line chart** |  Price excluding optional support disaggregated by ranges (<$500; $500-$1000; >=$1000)
+**Bubble chart** | Relation between students reached, donations in USD and primary focus area
+**Scatter plot** | Relation between number of students reached and number of donors
+**Bar chart** | Donations in USD by state
+ | Donations in USD by month
 **Pie chart** | Number of donations by funding status
-Number of projects by teacher prefix
+ | Number of projects by teacher prefix
+ | Number of projects by resource type
+ | Number of projects by poverty level
+ | Number of projects by primary focus area
+ | Number of projects by grade level
+ | Number of donations by state
+ | Number of projects by metro area
 **Row chart** | Donations in USD by resource type
-
-
-
-* **Stacked line chart**:  Price excluding optional support disaggregated by ranges (<$500; $500-$1000; >=$1000)
-* **Pie chart**: Number of projects by teacher prefix
-* **Row chart**: Donations in USD by resource type
-* **Row chart**: Donations in USD by poverty level
-* **Row chart**: Donations in USD by primary focus area
-* **Row chart**: Donations in USD by grade level
-* **Pie chart**: Number of projects by resource type
-* **Pie chart**: Number of projects by poverty level
-* **Pie chart**: Number of projects by primary focus area
-* **Pie chart**: Number of projects by grade level
-* **Bar chart**: Donations in USD by state
-* **Pie chart**: Number of donations by state
-* **Bubble chart**: Relation between students reached, donations in USD and primary focus area
-* **Pie chart**: Number of projects by metro area
-* **Scatter plot**: Relation between number of students reached and number of donors
-* **Bar chart**: Donations in USD by month
-
-
+ | Donations in USD by resource type
+ | Donations in USD by poverty level
+ | Donations in USD by primary focus area
+ | Donations in USD by grade level
 
 ### PART 2 - A detailed data table with 8 data selectors
 
